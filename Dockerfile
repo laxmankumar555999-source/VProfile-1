@@ -1,7 +1,11 @@
-FROM tomcat:8-jre8
 
-RUN rm -rf /usr/local/tomcat/webapps/* 
+FROM tomcat:9.0-jdk21-temurin
 
-COPY target/vprofile-v1.war /usr/local/tomcat/webapps/ROOT.war
+ENV APP_NAME=hiring
+
+COPY target/hiring.war /usr/local/tomcat/webapps/${APP_NAME}.war
 
 EXPOSE 8080
+
+CMD ["catalina.sh", "run"]
+
